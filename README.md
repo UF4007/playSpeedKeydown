@@ -1,12 +1,11 @@
 # Speed Play (Description)
+
+Press down the specified key to accelerate the speed, and free the key to restore.
+
+按下按键加速，松开按键恢复。在界面选择加速按键。
+
 A google-chrome browser extension that allows to change the video playback speed of the video player.
 
-## Installation
-- [Download](https://github.com/Ujjwal0501/playSpeed/raw/master/dist/playSpeed.crx) the packed extension.
-- Open extensions tab in google-chrome browser `chrome://extensions`
-- Turn developer mode on if it's not
-- You need to efersh the browser page after enabling developer mode
-- Now simply drag and drop the downloaded .crx file and confirm the prompt
+### Download the .crx file in the release and drag it into your Chrome to install it.
 
-
-![Developer Mode](dev_mode.png)
+### 在release中直接下载.crx文件安装。
