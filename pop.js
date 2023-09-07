@@ -1,4 +1,5 @@
-var sp, disp, lsp, ldisp, state, lstate;
+var sp, disp, lsp, ldisp, state, lstate, ks;
+var isSetting;
 
 function applyChange(id, val) {
 	localStorage.setItem('playspeed-chrome-extension-'+id, val);
@@ -11,7 +12,8 @@ function initPreset() {
 	sp = document.getElementById('speed');
 	disp = document.getElementById('display');
 	lsp = localStorage.getItem('playspeed-chrome-extension-speed');
-	state = document.getElementById('state')
+	state = document.getElementById('state');
+	ks = document.getElementById('keytest');
 	if (lsp != null) {
 		sp.value = lsp;
 		disp.value = lsp;
@@ -53,6 +55,10 @@ function initListeners() {
 			changePlaySpeed(true);
 		}
 	});
+	ks.addEventListener('click', function () {
+		ks.textContent = "press a key to set";
+		isSetting = true;
+	});
 }
 
 
@@ -67,4 +73,23 @@ window.onload = (function () {
 	else {
 		changePlaySpeed(true);
 	}
+	result = localStorage.getItem('playspeed-chrome-extension-key');
+	chrome.runtime.sendMessage({what:"key", value:""+result});
 });
+
+document.onkeydown = (keyid) => {
+	key1 = localStorage['playspeed-chrome-extension-key'];
+	if(isSetting)
+	{
+		localStorage.setItem('playspeed-chrome-extension-key', keyid.keyCode);
+		chrome.runtime.sendMessage({what:"key", value:""+keyid.keyCode});
+	}
+}
+
+document.onkeyup = (keyid) => {
+	if(isSetting)
+	{
+		isSetting = false;
+		ks.textContent = "Select Accl Key";
+	}
+}

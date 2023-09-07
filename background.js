@@ -12,5 +12,9 @@ function(message, sender, response) {
 	chrome.tabs.executeScript({
 		code: 'localStorage.setItem(\'playspeed-chrome-extension-speed\', \''+message.value+'\'); var list1 = document.querySelector(\'video\').playbackRate =  '+message.value+'; '
 	});
+} else if (message.what == 'key'){
+	chrome.tabs.executeScript({
+		code: 'localStorage.setItem(\'playspeed-chrome-extension-key\', \''+message.value+'\');'
+	});
 }
 });
