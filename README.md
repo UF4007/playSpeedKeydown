@@ -1,4 +1,5 @@
 # Speed Play (Description)
+Press down the specified key to accelerate the speed, and free the key to restore.
 A google-chrome browser extension that allows to change the video playback speed of the video player.
 
 ## Installation
