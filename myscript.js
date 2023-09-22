@@ -1,8 +1,19 @@
-var video11 = document.getElementsByTagName('video')[0];
 var lspeed1 = localStorage['playspeed-chrome-extension-speed'];
 var key1 = localStorage['playspeed-chrome-extension-key'];
-if (lspeed1 != null) video11.playbackRate = lspeed1;
+if(typeof lspeed1 != 'undefined')
+{
+	var video11 = document.getElementsByTagName('video')[0];
+	if(typeof video11 != 'undefined')
+	{
+		video11.playbackRate = lspeed1;
+	}
+}
 document.onkeydown = (keyid) => {
+	var video11 = document.getElementsByTagName('video')[0];
+	if(typeof video11 == 'undefined')
+	{
+		return;
+	}
     var speed11 = video11.playbackRate;
 	key1 = localStorage['playspeed-chrome-extension-key'];
 	if(keyid.keyCode == key1)
@@ -36,6 +47,11 @@ document.onkeydown = (keyid) => {
 }
 
 document.onkeyup = (keyid) => {
+	var video11 = document.getElementsByTagName('video')[0];
+	if(typeof video11 == 'undefined')
+	{
+		return;
+	}
 	key1 = localStorage['playspeed-chrome-extension-key'];
 	if(keyid.keyCode == key1)
 	{
